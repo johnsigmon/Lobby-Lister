@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ./partials/head %>
+</head>
+<body>
+<header>
+<% include ./partials/header %>
+</header><!-- /header -->
+  <nav>
+<% include ./partials/navbar %>
+  </nav>
+
+  <h1>WELCOME,
+    <% if(user){ %>
+      <%= user.fname %> <%= user.lname %>
+    <% } else { %>
+      guest!
+    <% } %>
+  </h1>
+
+</body>
+</html>

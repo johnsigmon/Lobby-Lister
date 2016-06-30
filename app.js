@@ -5,8 +5,8 @@ const logger          = require('morgan');
 const bodyParser      = require('body-parser');
 const session         = require('express-session');
 const methodOverride  = require('method-override');
-const homeRoute       = require('./routes/home');
-const userRoute       = require('./routes/user');
+const homeRoute       = require('./controllers/homeRouter');
+const userRoute       = require('./controllers/userRouter');
 
 const app             = express();
 const port            = process.env.PORT || 3000;
