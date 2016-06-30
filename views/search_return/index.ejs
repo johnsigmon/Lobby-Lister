@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/head %>
+</head>
+<div class="header center white-textcontainer red darken-1 white-text">
+<body>
+<header>
+<% include ../partials/header %>
+</header><!-- /header -->
+  <nav>
+<% include ../partials/navigation %>
+  </nav>
+
+  <h1>WELCOME,
+    <% if(user){ %>
+      <%= user.fname %> <%= user.lname %>
+    <% } else { %>
+      guest!
+    <% } %>
+  </h1>
+
+</body>
+</div>
+</html>
