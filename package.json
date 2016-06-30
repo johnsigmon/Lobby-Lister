@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/johnsigmon/Project2#readme",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "express-session": "^1.13.0",
     "mongodb": "^2.1.18",
     "morgan": "^1.7.0",
     "path": "^0.12.7"
