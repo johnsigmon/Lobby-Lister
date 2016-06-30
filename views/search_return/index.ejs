@@ -12,13 +12,20 @@
 <% include ../partials/navigation %>
   </nav>
 
-  <h1>WELCOME,
-    <% if(user){ %>
-      <%= user.fname %> <%= user.lname %>
-    <% } else { %>
-      guest!
-    <% } %>
-  </h1>
+
+
+<ol>
+  <%if(companies.length){ %>
+    <% companies.forEach( function(companies){  %>
+    <li>[<%=companies.title%>]
+
+    </li>
+    <% }) %>
+  <% }else{ %>
+    <li>No Results found</li>
+  <% } %>
+</ol>
+
 
 </body>
 </div>

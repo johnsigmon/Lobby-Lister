@@ -5,8 +5,10 @@ const logger          = require('morgan');
 const bodyParser      = require('body-parser');
 const session         = require('express-session');
 const methodOverride  = require('method-override');
+
 const homeRoute       = require('./controllers/homeRouter');
 const userRoute       = require('./controllers/userRouter');
+const returnRoute = require('./controllers/returnRouter');
 
 const app             = express();
 const port            = process.env.PORT || 3000;
@@ -28,10 +30,11 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname,'public')));
-app.use('/bower_components', express.static(path.join(__dirname,'/bower_components')))
+app.use('/bower_components', express.static(path.join(__dirname,'/bower_components')));
 
-app.use('/', homeRoute);
 app.use('/user', userRoute);
+app.use('/results', returnRoute);
+app.use('/', homeRoute);
 
 app.listen(port, function() {
   console.log('Server is listening on ',port);
