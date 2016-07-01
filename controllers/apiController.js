@@ -7,6 +7,6 @@ const { enigmaReturns } = require('../models/enigmaDB');
 
 router.get('/', enigmaReturns, function(req,res) {
   // console.log(req.body);
-  res.render('search_return/index', {companies: res.results } );
+  res.render('home/index', {companies: res.results } );
 });
 module.exports = router;

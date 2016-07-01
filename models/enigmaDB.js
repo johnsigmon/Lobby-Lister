@@ -12,7 +12,7 @@ module.exports = {
     request.get({
       url: fullURL,
       qs: {
-        'search': '@client_name(Google|Vivendi)',
+        'search': '@client_name('+ req.query. +')',
         'select': 'client_name, year, amount,transaction_id,client_parent_name,serialid',
         'sort': 'amount-',
         'limit': '10'
