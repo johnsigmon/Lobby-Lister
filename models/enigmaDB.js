@@ -20,6 +20,7 @@ module.exports = {
       if(err) throw err;
       let companies = JSON.parse(body);
       res.results = companies.result;
+      console.log(res.results)
       next()
     })
 
