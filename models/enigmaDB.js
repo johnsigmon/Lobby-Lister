@@ -13,7 +13,9 @@ module.exports = {
       url: fullURL,
       qs: {
         'search': '@client_name(Google|Vivendi)',
-        'select': 'client_name, year, amount,transaction_id,client_parent_name,serialid'
+        'select': 'client_name, year, amount,transaction_id,client_parent_name,serialid',
+        'sort': 'amount-',
+        'limit': '10'
       }
 
     }, function(err, response, body){
