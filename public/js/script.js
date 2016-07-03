@@ -1,19 +1,16 @@
 
 
 $(document).ready(function() {
-console.log('WINNING')
 
+  $('.save-btn').on('click', function() {
+    console.log($(this));
+    console.log($(this).parent('span').innerHTML()  );
 
+//  var clientName = $(this).next('.cardtitle').text()
+// var lobbyURL = $(this).next('a').attr('href')
+// console.log(clientName, lobbyURL)
 
-const $company = $('companySearch').val();
-
-$('#companySearchForm').submit(function(req,res){
-  var data = $('form').serialize();
-  console.log(data)
-  res.send('../controllers/apiController', data);
-     });
-
-module.exports = data;
+})
 
 })
 

@@ -16,7 +16,7 @@ module.exports = {
     request.get({
       url: fullURL,
       qs: {
-        'search': '@client_name(Vivendi)',
+        'search': '@client_name('+req.query.company_name+')',
         'select': 'client_name, year, amount,transaction_id,client_parent_name,serialid',
         'sort': 'amount-',
         'limit': '10'
