@@ -1,19 +1,20 @@
 'use strict'
-const express         = require('express');
-const path            = require('path');
-const logger          = require('morgan');
-const bodyParser      = require('body-parser');
-const session         = require('express-session');
-const methodOverride  = require('method-override');
+const express              = require('express');
+const app                  = express();
+const port                 = process.env.PORT || 3000;
+const path                 = require('path');
+const logger               = require('morgan');
+const bodyParser           = require('body-parser');
+const session              = require('express-session');
+const methodOverride       = require('method-override');
 
 const homeController       = require('./controllers/homeController');
 const userController       = require('./controllers/userController');
-const apiController = require('./controllers/apiController');
+const apiController        = require('./controllers/apiController');
 
-const app             = express();
-const port            = process.env.PORT || 3000;
 
-// Adding session as a middleware
+app.set('view engine', 'ejs');
+
 app.use(session({
   saveUninitialized: true,
   resave: true,
@@ -21,19 +22,14 @@ app.use(session({
   cookie: {maxAge: 60000}
 }));
 
-// Adding Method override to allow our form to delete
 app.use(methodOverride('_method'));
-
-app.set('view engine', 'ejs');
-
-app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
-
 app.use(express.static(path.join(__dirname,'public')));
-app.use('/bower_components', express.static(path.join(__dirname,'/bower_components')));
+app.use(logger('dev'));
 
+app.use('/bower_components', express.static(path.join(__dirname,'bower_components')));
 app.use('/user', userController);
-app.use('/api', apiController);
+app.use('/search', apiController);
 app.use('/', homeController);
 
 app.listen(port, function() {

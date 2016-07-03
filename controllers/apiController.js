@@ -1,12 +1,16 @@
-const router = require('express').Router();
+'use strict'
+const express    = require('express')
+const bodyParser = require('body-parser')
+const router    = express.Router();
 const { enigmaReturns } = require('../models/enigmaDB');
+// const companyinput = require('../public/js/script')
 
-// router.get('/results', function(req,res){
-//     res.render('search_return/index');
-// });
 
 router.get('/', enigmaReturns, function(req,res) {
-  // console.log(req.body);
-  res.render('home/index', {companies: res.results } );
+  console.log(enigmaReturns)
+    res.render('search_return/index', {companies: res.results } );
 });
+
+
+
 module.exports = router;

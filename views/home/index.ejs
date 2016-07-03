@@ -11,12 +11,12 @@
   <nav>
 <% include ../partials/navigation %>
   </nav>
-
+<div class="container">
   <h1>Welcome,
     <% if(user){ %>
       <%= user.fname %> <%= user.lname %>
     <% } else { %>
-      guest!
+      stranger!
     <% } %>
   </h1>
 
@@ -25,7 +25,7 @@
 
   </section>
 
-
+</div>
 
 
 

@@ -1,0 +1,21 @@
+{
+  "name": "lobby_tracker",
+  "description": "Media Industry Lobbying Exposure Tool(how much organizations are paying lobbyists and what they're trying to affect)",
+  "main": "app.js",
+  "authors": [
+    "John Sigmon"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/johnsigmon/Project2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0"
+  }
+}
