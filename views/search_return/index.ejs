@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html class= 'teal darken-1'>
   <head><% include ../partials/head %></head>
     <div class="header center white-textcontainer red darken-1 white-text">
-      <body>
+      <body >
       <header><% include ../partials/header %></header>
       <nav><% include ../partials/navigation %></nav>
 
@@ -18,12 +18,13 @@
               <strong><%=companies.amount%></strong>
               <br>
               <%=companies.client_parent_name%>
+              <br>
               <%=companies.year%>
             </p>
           </div>
           <div class="card-action">
-              <a href="#">The bill</a>
-              <a href="#" class = 'save-btn'>Save</a>
+              <a href="billLink">The bill</a>
+              <a id='saveArticle' href="#">Save</a>
           </div>
           </div>
           </div>

@@ -26,8 +26,8 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'public')));
 app.use(logger('dev'));
-
 app.use('/bower_components', express.static(path.join(__dirname,'bower_components')));
+
 app.use('/user', userController);
 app.use('/search', apiController);
 app.use('/', homeController);

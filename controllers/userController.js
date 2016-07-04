@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createUser, loginUser } = require('../models/user');
+const { createUser, loginUser, saveContent } = require('../models/user');
 
 router.get('/new', function(req,res) {
   res.render('user/new');
@@ -7,14 +7,14 @@ router.get('/new', function(req,res) {
 
 router.post('/new', createUser, function(req,res) {
   console.log(req.body);
-  res.redirect('/');
+  res.redirect('login');
 });
 
 router.get('/login', function(req,res) {
   res.render('user/login');
 });
 
-router.post('/login', loginUser,function(req,res) {
+router.post('/login', loginUser, function(req,res) {
   console.log(res.user);
   req.session.user = res.user;
 
@@ -24,6 +24,21 @@ router.post('/login', loginUser,function(req,res) {
   });
 });
 
+//user profile routing//
+router.get('/profile', function(req,res){
+  if(typeof req.session.user !== undefined){
+  res.render('user/profile')
+  }else {
+    res.redirect('/')
+  }
+})
+
+router.post('/profile', saveContent, function(req, res) {
+  console.log(req.body)
+   res.redirect('/')
+});
+
+//user logout
 router.delete('/logout', function(req,res) {
   req.session.destroy(function(err) {
     res.redirect('/');
