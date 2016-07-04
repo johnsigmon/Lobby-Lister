@@ -11,7 +11,7 @@ const methodOverride       = require('method-override');
 const homeController       = require('./controllers/homeController');
 const userController       = require('./controllers/userController');
 const apiController        = require('./controllers/apiController');
-
+const saveController       = require('./controllers/saveController');
 
 app.set('view engine', 'ejs');
 
@@ -19,7 +19,7 @@ app.use(session({
   saveUninitialized: true,
   resave: true,
   secret: 'sooopersekret',
-  cookie: {maxAge: 60000}
+  cookie: {maxAge: 600000}
 }));
 
 app.use(methodOverride('_method'));
@@ -29,6 +29,7 @@ app.use(logger('dev'));
 app.use('/bower_components', express.static(path.join(__dirname,'bower_components')));
 
 app.use('/user', userController);
+app.use('/mypage', saveController);
 app.use('/search', apiController);
 app.use('/', homeController);
 

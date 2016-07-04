@@ -37,7 +37,6 @@ function createUser(req, res, next) {
         lname: req.body.lname,
         email: email,
         passwordDigest: hash,
-        favoriteArticles: []
       }
       db.collection('users').insertOne(userInfo, function(err, result) {
         if(err) throw err;
@@ -48,25 +47,5 @@ function createUser(req, res, next) {
 }
 
 
-function saveContent (req, res, next) {
-  MongoClient.connect(dbConnection, function(err,db) {
-    if(typeof req.session.user !== undefined){
-    let favoriteArticles = []
-      db.collection('users').findOne({"email": req.session.email}).update({favoriteArticles: req.session.user.favoriteArticles},{$addToSet: {currentPick: req.body}})
-    }
-  })}
 
-
-
-  function loadUserProfile (req, res, next) {
-    MongoClient.connect(dbConnection, function(err,db) {
-      if(typeof req.session.user !== undefined) {
-        db.collection('users').find(req)
-      }
-    })
-  }
-
-
-
-
-module.exports = { createUser, loginUser, saveContent }
+module.exports = { createUser, loginUser, }

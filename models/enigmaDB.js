@@ -2,12 +2,7 @@
 const request           = require('request');
 const ENIGMA_KEY        = process.env.ENIGMA_KEY
 
-// function createURLobj (req,res,next) {
-//  $('div.card-action').on('click', '.save-btn', function() {
-//   console.log("whee!")
-// });
 
-// }
 
 module.exports = {
   enigmaReturns(req,res,next){

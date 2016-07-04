@@ -1,15 +1,15 @@
 const router = require('express').Router();
-const { createUser, loginUser, saveContent } = require('../models/user');
-
+const { createUser, loginUser, } = require('../models/user');
+////Create new user///
 router.get('/new', function(req,res) {
   res.render('user/new');
 });
-
+///Redirect to login///
 router.post('/new', createUser, function(req,res) {
   console.log(req.body);
   res.redirect('login');
 });
-
+////
 router.get('/login', function(req,res) {
   res.render('user/login');
 });
@@ -23,20 +23,7 @@ router.post('/login', loginUser, function(req,res) {
     res.redirect('/');
   });
 });
-
-//user profile routing//
-router.get('/profile', function(req,res){
-  if(typeof req.session.user !== undefined){
-  res.render('user/profile')
-  }else {
-    res.redirect('/')
-  }
-})
-
-router.post('/profile', saveContent, function(req, res) {
-  console.log(req.body)
-   res.redirect('/')
-});
+///////////////////////////////////////
 
 //user logout
 router.delete('/logout', function(req,res) {
