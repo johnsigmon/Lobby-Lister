@@ -14,7 +14,7 @@ module.exports = {
       url: fullURL,
       qs: {
         'search': '@client_name('+req.query.company_name+')',
-        'select': 'client_name, year, amount,transaction_id,client_parent_name,serialid',
+        'select': 'client_name, year, amount,transaction_id,client_parent_name,serialid,transaction_id',
         'sort': 'amount-',
         'limit': '10'
       }
@@ -28,6 +28,7 @@ module.exports = {
         });
   }
 
+///Will be building out a secondary path in the same API ///
   //   enigmaReturns(req,res,next){
   //   const url1 = 'https://api.enigma.io/v2/data/';
   //   const datapath = '/us.gov.senate.publicrecords.lobbying.lobbying';

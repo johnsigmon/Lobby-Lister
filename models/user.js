@@ -48,4 +48,4 @@ function createUser(req, res, next) {
 
 
 
-module.exports = { createUser, loginUser, }
+module.exports = { createUser, loginUser }
