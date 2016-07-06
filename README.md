@@ -2,7 +2,7 @@
 
 
 ##Media Industry Lobbying Exposure Tool
-      How much organizations are paying lobbyists to effect political action.
+      How much organizations are paying lobbyists and how it's effecting political action.
 
 ***
 ##User Stories
