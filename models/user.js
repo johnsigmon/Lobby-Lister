@@ -1,17 +1,17 @@
-const { MongoClient } = require('mongodb');
-const dbConnection = process.env['MONGODB_URI']  ||'mongodb://localhost:27017/auth_practice';
-const bcrypt = require('bcrypt');
-const salt = bcrypt.genSalt(10);
+const { MongoClient }     = require('mongodb');
+const dbConnection        = process.env['MONGODB_URI']  ||'mongodb://localhost:27017/auth_practice';
+const bcrypt              = require('bcrypt');
+const salt                = bcrypt.genSalt(10);
 
 function loginUser(req,res,next) {
-  let email = req.body.email;
-  let password = req.body.password;
+  let email       = req.body.email;
+  let password    = req.body.password;
 
   MongoClient.connect(dbConnection, function(err, db) {
     db.collection('users').findOne({"email": email}, function(err, user) {
       if(err) throw err;
       if(user === null) {
-        console.log('Can\'t find user with email ',email);
+        console.log('No account associated with email ',email);
       } else  if(bcrypt.compareSync(password, user.passwordDigest)){
         res.user = user;
       }
@@ -37,6 +37,7 @@ function createUser(req, res, next) {
         lname: req.body.lname,
         email: email,
         passwordDigest: hash,
+        favoriteBills: []
       }
       db.collection('users').insertOne(userInfo, function(err, result) {
         if(err) throw err;
@@ -46,6 +47,47 @@ function createUser(req, res, next) {
   }
 }
 
+//James assisted//
+function saveContent (req, res, next) {
+  const userEmail = req.session.user.email;
+  MongoClient.connect(dbConnection, function(err,db) {
+    if(typeof userEmail !== undefined){
+      let company = req.query.company;
+      let details = req.body.details;
+
+      db.collection('users')
+      .update({"email": userEmail},
+        { $addToSet: {
+        'favoriteBills': {
+            'company': company,
+            'details': details
+
+          }
+        }
+      }, function(err, result){
+        if(err) throw err;
+        console.log('added content to user page')
+        next()
+
+      })
+      }else{
+        console.log('not logged in')
+      }
+    })
+  }
+
+function loadUserProfile (req, res, next) {
+
+    MongoClient.connect(dbConnection, function(err,db) {
+      if(typeof req.session.user !== undefined) {
+        db.collection('users').find({email: req.session.user.email}).toArray((err,data)=>{
+          if(err) throw err
+            res.userProfile = data
+          next()
+        })
+      }
+    })
+  }
 
 
-module.exports = { createUser, loginUser }
+module.exports = { createUser, loginUser, saveContent, loadUserProfile }

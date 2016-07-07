@@ -2,26 +2,26 @@
 
 $(document).ready(function() {
 
-  $('.saveArticle').on('click', function(event){
-   // const clicked =  $(this).parent().parent().html()
-   let cardDiv = $(this).closest('card')
-   let span = cardDiv.attr('span')
-   let pText = cardDiv.attr('p')
+  $('.saveBill').on('click', function(){
 
-   console.log('Span :', span, 'P content :', pText)
-   const dataObj = {
-    company: clicked,
-  }
+    let $results = $(this).closest('.result');
+    let company = $results.children('.card-title').text();
+    let details = $results.children('p').text();
+
+   console.log('company :', company, 'details :', details)
+
     $.ajax({
-      url: './mypage',
-      type: 'POST',
+      url: 'user/save-content',
+      type: 'GET',
       data: {
-        param1: dataObj},
+        'company': company,
+        'details': details
+        },
       })
-      .done(function() {
-      console.log("success");
+      .done(function(data) {
+      // console.log(data);
      })
-      .fail(function() {
+      .fail(function(error) {
       console.log("error");
      })
       .always(function() {
@@ -29,7 +29,6 @@ $(document).ready(function() {
       });
     })
   })
-
 
 
 

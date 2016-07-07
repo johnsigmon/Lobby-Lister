@@ -1,34 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <% include ../partials/head %>
-</head>
-<div class="header center white-textcontainer red darken-1 white-text">
-<body>
-<header>
-<% include ../partials/header %>
-</header><!-- /header -->
-  <nav>
-<% include ../partials/navigation %>
-  </nav>
-<div class="container">
-  <h1>Welcome,
-    <% if(user){ %>
-      <%= user.fname %> <%= user.lname %>
-    <% } else { %>
-      stranger!
-    <% } %>
-  </h1>
 
-  <section class= 'formEJS'>
-    <% include ../partials/form %>
+  <head><% include ../partials/head %></head>
 
-  </section>
+  <body>
+    <header><% include ../partials/header %></header>
 
-</div>
+    <nav><% include ../partials/navigation %></nav>
 
+      <div class="container">
+        <h1>Welcome,
+          <% if(user){ %>
+            <%= user.fname %> <%= user.lname %>
+          <% } else { %>
+            stranger!
+          <% } %>
+        </h1>
 
+      <section class= 'formEJS'><% include ../partials/form %></section>
 
-</body>
-</div>
+      </div>
+
+  </body>
+
 </html>

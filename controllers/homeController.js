@@ -1,8 +1,8 @@
-const router = require('express').Router();
+const homeRouter = require('express').Router();
 
 
-router.get('/', function(req,res) {
+homeRouter.get('/', function(req,res) {
   res.render('home/index',{user: req.session.user});
 });
 
-module.exports = router;
+module.exports = homeRouter;

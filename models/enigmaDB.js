@@ -25,8 +25,8 @@ module.exports = {
           res.results = companies.result;
           console.log(res.results);
           next();
-        });
-  }
+      });
+    }
 
 ///Will be building out a secondary path in the same API ///
   //   enigmaReturns(req,res,next){
