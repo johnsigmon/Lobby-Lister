@@ -24,9 +24,10 @@ userRouter.post('/login', loginUser, function(req,res) {
   });
 });
 ///////////
-userRouter.get('/mypage', (req,res)=>{res.render('user/mypage', {user: req.session.user})})
+userRouter.get('/mypage', loadUserProfile, (req,res)=>{res.render('user/mypage', {user: req.session.user, userInfo: res.userProfile})})
+userRouter.post('/save-content', saveContent, (req,res)=>{res.redirect('./mypage')});
 
-userRouter.get('/save-content', saveContent, (req,res)=>{res.redirect('/')});
+
 ///////////////////////////////////////
 
 //user logout

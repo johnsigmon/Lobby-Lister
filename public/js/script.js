@@ -12,7 +12,7 @@ $(document).ready(function() {
 
     $.ajax({
       url: 'user/save-content',
-      type: 'GET',
+      type: 'POST',
       data: {
         'company': company,
         'details': details

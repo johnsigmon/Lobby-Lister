@@ -47,7 +47,7 @@ function createUser(req, res, next) {
   }
 }
 
-//James assisted//
+
 function saveContent (req, res, next) {
   const userEmail = req.session.user.email;
   MongoClient.connect(dbConnection, function(err,db) {
