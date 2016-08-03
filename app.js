@@ -7,7 +7,6 @@ const logger               = require('morgan');
 const bodyParser           = require('body-parser');
 const session              = require('express-session');
 const methodOverride       = require('method-override');
-
 const homeController       = require('./controllers/homeController');
 const userController       = require('./controllers/userController');
 const apiController        = require('./controllers/apiController');
