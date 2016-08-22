@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html class= 'teal darken-1'>
+<html>
   <head><% include ../partials/head %></head>
-    <div class="header center white-textcontainer red darken-1 white-text">
+    <div class="header center white-textcontainer">
       <body >
-      <header><% include ../partials/header %></header>
       <nav><% include ../partials/navigation %></nav>
-    <h1><%= user.fname %> <%= user.lname %></h1>
-      <h3><%= user.email %></h3>
-
+        <h1><%= user.fname %> <%= user.lname %></h1>
+        <h3><%= user.email %></h3>
         <div class="container">
           <%if(user..length){ %>
           <% companies.forEach( function(companies){  %>

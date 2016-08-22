@@ -1,9 +1,22 @@
 html {
   height: 100%;
   width: 100%;
-  background-color: teal;
+  color: #E5F1FF;
+  background-color: #264F7F;
+}
+.navig {
+  background-color: #586C7F;
+}
+
+.welcome-message {
+  font-size: 2em;
+
+}
+button {
+  background-color: #586C7F;
 }
 
 .logo-container {
   float: left;
 }
+
