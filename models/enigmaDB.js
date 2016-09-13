@@ -14,6 +14,7 @@ module.exports = {
       url: fullURL,
       qs: {
         'search': '@client_name('+req.query.company_name+')',
+        /*'search': '@year('+req.query.year+')',*/
         'select': 'client_name, year, amount,transaction_id,client_parent_name,serialid,transaction_id',
         'sort': 'amount-',
         'limit': '10'
