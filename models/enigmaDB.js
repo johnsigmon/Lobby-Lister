@@ -6,9 +6,9 @@ const ENIGMA_KEY        = process.env.ENIGMA_KEY
 
 module.exports = {
   enigmaReturns(req,res,next){
-    const url1 = 'https://api.enigma.io/v2/data/';
-    const datapath = '/us.gov.senate.publicrecords.lobbying.lobbying';
-    const fullURL = url1 + ENIGMA_KEY + datapath;
+    const url1      = 'https://api.enigma.io/v2/data/';
+    const datapath  = '/us.gov.senate.publicrecords.lobbying.lobbying';
+    const fullURL   = url1 + ENIGMA_KEY + datapath;
 
     request.get({
       url: fullURL,
@@ -23,7 +23,6 @@ module.exports = {
           if(err) throw err;
           let companies = JSON.parse(body);
           res.results = companies.result;
-          console.log(res.results);
           next();
       });
     }
