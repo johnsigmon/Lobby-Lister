@@ -24,22 +24,8 @@ module.exports = {
           let companies = JSON.parse(body);
           res.results = companies.result;
           console.log(res.results[0].year)
-          console.log()
-
           next();
       });
-    },
-    updateGraph(req,res,next) {
-
-            let graphData = []
-            for(let i=0; i < companies.length; i++) {
-            graphData.push({
-                amount: companies[i].amount,
-                year: companies[i].year
-          })}
-            console.log(graphData);
-
-            next();
     }
 
 }

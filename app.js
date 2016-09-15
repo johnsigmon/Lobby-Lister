@@ -1,8 +1,8 @@
 'use strict'
 const express              = require('express');
 const app                  = express();
-var http                   = require('http').Server(app);
-var io                     = require('socket.io')(http);
+const http                   = require('http').Server(app);
+const io                     = require('socket.io')(http);
 const port                 = process.env.PORT || 3000;
 const path                 = require('path');
 const logger               = require('morgan');
@@ -23,7 +23,9 @@ app.use(session({
 }));
 
 io.on('connection', function(socket){
-  console.log('a user connected');
+  socket.on('last search', function(search){
+    io.emit('last search', search);
+  });
 });
 
 app.use(methodOverride('_method'));
