@@ -1,6 +1,8 @@
 'use strict'
 const express              = require('express');
 const app                  = express();
+var http                   = require('http').Server(app);
+var io                     = require('socket.io')(http);
 const port                 = process.env.PORT || 3000;
 const path                 = require('path');
 const logger               = require('morgan');
@@ -20,16 +22,20 @@ app.use(session({
   cookie: {maxAge: 900000}
 }));
 
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'public')));
 app.use(logger('dev'));
-app.use('/bower_components', express.static(path.join(__dirname,'bower_components')));
+app.use('/node_modules', express.static(path.join(__dirname,'node_modules')));
 
 app.use('/user', userController);
 app.use('/search', apiController);
 app.use('/', homeController);
 
-app.listen(port, function() {
+http.listen(port, function() {
   console.log('Server is listening on ',port);
 })
