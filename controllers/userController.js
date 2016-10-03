@@ -6,7 +6,6 @@ userRouter.get('/new', function(req,res) {
 });
 ///Redirect to login///
 userRouter.post('/new', createUser, function(req,res) {
-  console.log(req.body);
   res.redirect('login');
 });
 ////
@@ -15,7 +14,7 @@ userRouter.get('/login', function(req,res) {
 });
 
 userRouter.post('/login', loginUser, function(req,res) {
-  console.log(res.user);
+
   req.session.user = res.user;
 
   req.session.save(function(err) {

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head><% include ../partials/head %></head>
+    <div class="header center">
+      <body >
+      <nav><% include ../partials/navigation %></nav>
+
+        <div class="container">
+        <div class="row">
+          <div class="col">
+          <%if(details.length){ %>
+          <% details.forEach( function(details){  %>
+          <div class="card grey darken-1 ">
+          <div class="card-content white-text ">
+          <span class="card-title"><%=details.code%></span>
+            <p>$
+              <strong><%=details.specific_issue%></strong>
+          </div>
+          <div class="card-action">
+            <form action='/details' method= 'get' class="col s12">
+            <button class='saveBill blue darken'>Back</button>
+          </div>
+          </div>
+          <% }) %>
+          </div>
+          </div>
+          <% }else{ %>
+          <li>No Results found</li>
+          <% } %>
+        </div>
+</body>
+</div>
+</html>

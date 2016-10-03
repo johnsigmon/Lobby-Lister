@@ -16,15 +16,18 @@
             <p>$
               <strong><%=companies.amount%></strong>
               <br>
-              <%=companies.client_parent_name%>
+              <%=companies.client_id%>
               <br>
               <%=companies.year%>
             </p>
-            <p>Transaction ID <br><%=companies.transaction_id%></p>
+            <p>Transaction ID <br></p>
           </div>
           <div class="card-action">
-              <a href="billLink">View bill</a>
-             <button class='saveBill blue darken'>Save</button>
+            <form action='search/details' method= 'get' class="col s12" name=<%=companies.id%>>
+            <input type="hidden" name="id" value=<%=companies.id%> />
+            <button type="submit" class='blue darken'><%=companies.id%></button>
+            </form>
+            <button class='saveBill blue darken'>Save</button>
           </div>
           </div>
           <% }) %>
