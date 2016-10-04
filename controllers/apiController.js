@@ -7,13 +7,15 @@ const { enigmaReturns, enigmaDetails } = require('../models/enigmaDB');
 
 
 apiRouter.get('/', enigmaReturns, function(req,res) {
-    res.render('search_return/index', {companies: res.results } );
+    res.render('search_return/index', {companies: res.results,
+                                        details: res.results } );
+
 
 });
 
 apiRouter.get('/details', enigmaDetails, function(req,res) {
-    res.render('search_return/details', {details: res.results } );
-    console.log(res)
+    res.render('search_return/details', {details: res.results} );
+
 
 
 
