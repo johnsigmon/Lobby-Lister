@@ -37,8 +37,10 @@ module.exports = {
                 }, function(err, response, body){
                   if(err) throw err;
                   let details = JSON.parse(body);
-
                   res.rows = details.result;
+                  /*It's adding appending the results on the backend but not passing to the controller*/
+                  res.results = res.results.concat(res.rows);
+                  /*console.log(res.results)*/
 
                 });
           }
