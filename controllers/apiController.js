@@ -2,26 +2,13 @@
 const express    = require('express')
 const bodyParser = require('body-parser')
 const apiRouter    = express.Router();
-const { enigmaReturns, enigmaDetails } = require('../models/enigmaDB');
-// const companyinput = require('../public/js/script')
-
+const { enigmaReturns } = require('../models/enigmaDB');
 
 apiRouter.get('/', enigmaReturns, function(req,res) {
+  console.log(res.results)
     res.render('search_return/index', {companies: res.results,
-                                        details: res.results } );
-
-
-});
-
-apiRouter.get('/details', enigmaDetails, function(req,res) {
-    res.render('search_return/details', {details: res.results} );
-
-
-
+                                        details: res.rows } );
 
 });
-
-
-
 
 module.exports = apiRouter;
