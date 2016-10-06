@@ -8,7 +8,7 @@ function loginUser(req,res,next) {
   let password    = req.body.password;
 
   MongoClient.connect(dbConnection, function(err, db) {
-    db.collection('users').findOne({"email": email}, function(err, user) {
+    db.collection('users').findOne({ "email": email }, function(err, user) {
       if(err) throw err;
       if(user === null) {
         console.log('No account associated with email ',email);
@@ -56,7 +56,7 @@ function saveContent (req, res, next) {
       let details = req.body.details;
 
       db.collection('users')
-      .update({"email": userEmail},
+      .update({ "email": userEmail },
         { $addToSet: {
         'favoriteBills': {
             'company': company,
@@ -65,12 +65,12 @@ function saveContent (req, res, next) {
           }
         }
       }, function(err, result){
-        if(err) throw err;
+        if (err) throw err;
         console.log('added content to user page')
         next()
 
       })
-      }else{
+      } else {
         console.log('not logged in')
       }
     })
@@ -79,9 +79,9 @@ function saveContent (req, res, next) {
 function loadUserProfile (req, res, next) {
 
     MongoClient.connect(dbConnection, function(err,db) {
-      if(typeof req.session.user !== undefined) {
-        db.collection('users').find({email: req.session.user.email}).toArray((err,data)=>{
-          if(err) throw err
+      if (typeof req.session.user !== undefined) {
+        db.collection('users').find({ email: req.session.user.email }).toArray((err,data)=>{
+          if (err) throw err
             res.userProfile = data
           next()
         })

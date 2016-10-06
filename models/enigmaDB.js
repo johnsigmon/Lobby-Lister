@@ -15,38 +15,36 @@ module.exports = {
         'sort': 'amount-',
         'limit' : 10
         }
-      }, function(err, response, body){
-          if(err) throw err;
-          let companies = JSON.parse(body);
-          res.results = companies.result;
+    }, function(err, response, body){
+        if (err) throw err;
+        const companies = JSON.parse(body);
+        const url2      = 'https://api.enigma.io/v2/data/';
+        const datapath2 = "/us.gov.senate.lobbyingdisclosure.issue.2016"
+        const fullURL2   = url2 + ENIGMA_KEY + datapath2;
+        res.results = companies.result;
+        res.locals.billDetails = []
+        res.rows;
+        for (let i =0; i < res.results.length; i++){
+          request.get({
+            url: fullURL2,
+            qs: {
+              'search': res.results[i]['id'],
+              'select': 'id, code, specific_issue'
+            }
+          }, function(err, response, body){
+              if (err) throw err;
+              const details = JSON.parse(body);
+              res.rows = details.result;
 
-                const url2      = 'https://api.enigma.io/v2/data/';
-                const datapath2 = "/us.gov.senate.lobbyingdisclosure.issue.2016"
-                const fullURL2   = url2 + ENIGMA_KEY + datapath2;
-                res.locals.billDetails = []
-                res.rows;
+              /*It's adding appending the results on the backend but not passing to the controller*/
+              res.results = res.results.concat(res.rows);
+              console.log(res.results)
+            })}
 
-          for (let i =0; i < res.results.length; i++){
-
-                request.get({
-                  url: fullURL2,
-                  qs: {
-                    'search': res.results[i]['id'],
-                    'select': 'id, code, specific_issue'
-                  }
-                }, function(err, response, body){
-                  if(err) throw err;
-                  let details = JSON.parse(body);
-                  res.rows = details.result;
-                  /*It's adding appending the results on the backend but not passing to the controller*/
-                  res.results = res.results.concat(res.rows);
-                  /*console.log(res.results)*/
-
-                });
-          }
-          next();
-      });
-    },
+      next();
+      }
+    );
+  },
 
 /*    newFunction(req,res,next){
       const url1      = 'https://api.enigma.io/v2/data/';

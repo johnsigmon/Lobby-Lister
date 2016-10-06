@@ -4,9 +4,9 @@ $(document).ready(function() {
 
   $('.saveBill').on('click', function(){
 
-    let $results  = $(this).closest('.result');
-    let company   = $results.children('.card-title').text();
-    let details   = $results.children('p').text();
+    const $results  = $(this).closest('.result');
+    const company   = $results.children('.card-title').text();
+    const details   = $results.children('p').text();
 
    console.log('company :', company, 'details :', details)
 
