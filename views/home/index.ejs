@@ -6,16 +6,22 @@
   <body>
     <nav><% include ../partials/navigation %></nav>
       <div class="container">
-        <h1 class="welcome-message">Welcome,
+      <div class="row">
+        <div class="col s6 offset-s3">
+          <h3>Welcome,
           <% if(user){ %>
             <%= user.fname %> <%= user.lname %>
           <% } else { %>
             stranger!
           <% } %>
-        </h1>
-
+        </h3>
+          <h4><em>Lobby Lister is a tool that aims to help to identify the intentions and impact of current coorperate contributions on policy.</em></h4>
+          <h5>Be sure to create an account or sign back in if you'd like the ability to save your search results.  Otherwise search away!</h5>
+          </div>
+        </div>
+        <div class="row">
       <section class= 'formEJS'><% include ../partials/form %></section>
-
+        </div>
       </div>
 
   </body>

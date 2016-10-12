@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head><% include ../partials/head %></head>
+  <head><% include ../partials/head %>
+
+  </head>
     <div class="header center">
       <body >
       <nav><% include ../partials/navigation %></nav>
 
         <div class="container">
+        <h3>D3 Graphic</h3>
+        <section id="chart">
+
+        </section>
         <div class="row">
-          <div class="col">
+          <div class="col s6 offset-s3">
           <%if(companies.length){ %>
           <% companies.forEach( function(companies){  %>
           <div class="card grey darken-1 ">
@@ -38,6 +44,8 @@
           <li>No results</li>
           <% } %>
         </div>
+          <script type="text/javascript" src="/js/script.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.7/d3.min.js'></script>
 </body>
 </div>
 </html>

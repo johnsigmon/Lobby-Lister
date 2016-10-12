@@ -34,16 +34,37 @@ module.exports = {
           }, function(err, response, body){
               if (err) throw err;
               const details = JSON.parse(body);
+            /*  console.log(details)*/
               res.rows = details.result;
 
               /*It's adding appending the results on the backend but not passing to the controller*/
               res.results = res.results.concat(res.rows);
-              console.log(res.results)
+             /* console.log(res.results)*/
             })}
 
       next();
       }
     );
+  },
+
+  getDetails(req,res,next) {
+    const url2      = 'https://api.enigma.io/v2/data/';
+    const datapath2 = "/us.gov.senate.lobbyingdisclosure.issue.2016"
+    const fullURL2   = url2 + ENIGMA_KEY + datapath2;
+    request.get({
+            url: fullURL2,
+            qs: {
+              'search': req.query.id,
+              'select': 'id, code, specific_issue'
+            }
+          }, function(err, response, body){
+              if (err) throw err;
+              const details = JSON.parse(body);
+            /*  console.log(details)*/
+              res.rows = details.result;
+              next();
+
+  });
   },
 
 /*    newFunction(req,res,next){
