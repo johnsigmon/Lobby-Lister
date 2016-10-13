@@ -7,12 +7,16 @@ html {
   background-color: #264F7F;
   font-family: 'Raleway', sans-serif;
 }
+
 .navig {
   background-color: #586C7F;
 }
 
 .welcome-message {
   font-size: 2em;
+}
+p {
+  font-size: 1.1em;
 }
 
 button {
@@ -21,5 +25,33 @@ button {
 
 #companySearchForm {
   padding-top: 20px;
+}
+
+.money {
+  color: lightgreen;
+  font-weight: bold;
+  font-size: 1.75em;
+}
+
+.lobbyist {
+  color: yellow;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.registrar {
+  color: orange;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+.transactionID {
+  color: lightblue;
+  font-weight: bold;
+  font-size: 1.25em;
+
+}
+
+.card-title {
+  font-size: 2em;
 }
 

@@ -3,7 +3,7 @@
 
 $(document).ready(function() {
 
-   d3.select("#chart").text('Hello');
+   /*d3.select("#chart").text('Hello');*/
 
   $('.saveBill').on('click', function(){
 

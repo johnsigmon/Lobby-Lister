@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head><% include ../partials/head %></head>
-    <div class="header center">
       <body >
+    <div class="header center">
       <nav><% include ../partials/navigation %></nav>
-
         <div class="container">
+
+
+
+
         <div class="row">
-          <div class="col">
+          <div class="col s8 offset-s2">
           <%if(details.length){ %>
+          <h3>The sum was spent on the following causes/bills...</h3>
           <% details.forEach( function(details){  %>
           <div class="card grey darken-1 ">
           <div class="card-content white-text ">
@@ -25,9 +29,10 @@
           </div>
           </div>
           <% }else{ %>
-          <li>No Additional Information Available</li>
+          <h3>Hmmmm interesting...No further information on this payment. That's not good.</h3>
+            <a href="/search" class="waves-effect waves-light btn grey" title="">Back</a>
           <% } %>
         </div>
-</body>
 </div>
+</body>
 </html>

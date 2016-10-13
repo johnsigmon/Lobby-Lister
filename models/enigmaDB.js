@@ -11,7 +11,7 @@ module.exports = {
       url: fullURL,
       qs: {
         'search': req.query.company_name,
-        'select': 'client_name, year, amount, client_id, registrant_name ,serialid,id',
+        'select': 'client_name, year, amount, client_id, client_general_description, registrant_name, registrant_general_description, contact_full_name, serialid, id',
         'sort': 'amount-',
         'limit' : 10
         }
@@ -54,7 +54,7 @@ module.exports = {
     request.get({
             url: fullURL2,
             qs: {
-              'search': req.query.id,
+              'search': req.query['id'],
               'select': 'id, code, specific_issue'
             }
           }, function(err, response, body){
