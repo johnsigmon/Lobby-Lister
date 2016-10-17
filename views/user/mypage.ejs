@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head><% include ../partials/head %></head>
+    <div class="header center white-textcontainer">
+      <body >
+      <nav><% include ../partials/navigation %></nav>
+        <h1><%= user.fname %> <%= user.lname %></h1>
+        <h3><%= user.email %></h3>
+
+        <div class="container">
+          <%if(user.length){ %>
+          <% companies.forEach( function(companies){  %>
+          <div class="row">
+          <div class="col s12 m6 result">
+          <div class="card blue-grey darken-1 ">
+          <div class="card-content white-text ">
+          <span class="card-title"><%=companies.client_name%></span>
+            <p>$
+              <strong><%=companies.amount%></strong>
+              <br>
+              <%=companies.client_parent_name%>
+              <br>
+              <%=companies.year%>
+            </p>
+            <p>Transaction ID <br><%=companies.transaction_id%></p>
+          </div>
+          <div class="card-action">
+              <a href="billLink">The bill</a>
+             <button class='deleteBill'>Remove</button>
+          </div>
+          </div>
+          </div>
+          </div>
+          <% }) %>
+          <% }else{ %>
+          <li>No Results found</li>
+          <% } %>
+        </div>
+      </body>
+    </div>
+</html>

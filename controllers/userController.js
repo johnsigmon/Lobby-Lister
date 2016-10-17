@@ -14,17 +14,18 @@ userRouter.get('/login', function(req,res) {
 });
 
 userRouter.post('/login', loginUser, function(req,res) {
-
   req.session.user = res.user;
-
   req.session.save(function(err) {
     if(err) throw err;
     res.redirect('/');
   });
 });
 ///////////
-userRouter.get('/mypage', loadUserProfile, (req,res)=>{res.render('user/mypage', {user: req.session.user, userInfo: res.userProfile})})
-userRouter.post('/save-content', saveContent, (req,res)=>{res.redirect('./mypage')});
+userRouter.get('/mypage', loadUserProfile, (req,res)=>{
+  res.render('user/mypage', {user: req.session.user, userInfo: res.userProfile})})
+
+userRouter.get('/save-content', saveContent, (req,res)=>{
+  res.render('user/mypage', {user: req.session.user, userInfo: res.userProfile})});
 
 
 ///////////////////////////////////////

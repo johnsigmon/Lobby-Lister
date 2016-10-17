@@ -45,7 +45,12 @@
             <input type="hidden" name="id" value=<%=companies.id%> />
             <button type="submit" class='red darken white-text btn-flat'>What's this money going towards?</button>
             </form>
-            <button class='saveBill blue darken white-text btn-flat'>Save</button>
+            <form action="user/save-content" method="post" class="col s6" name=<%=companies.length%>>
+            <input type="hidden" name="client_name" value=<%=companies.client_name%>>
+            <input type="hidden" name="registrant_name" value=<%=companies.registrant_name%>>
+            <input type="hidden" name="amount" value=<%=companies.amount%>>
+            <button type="submit" class='saveBill blue darken white-text btn-flat'>Save</button>
+            </form>
           </div>
           </div>
           <% }) %>

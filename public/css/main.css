@@ -7,6 +7,15 @@ html {
   background-color: #264F7F;
   font-family: 'Raleway', sans-serif;
 }
+.greeting {
+  float: right;
+}
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 72px; }
+
 
 .navig {
   background-color: #586C7F;

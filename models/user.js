@@ -52,15 +52,16 @@ function saveContent (req, res, next) {
   const userEmail = req.session.user.email;
   MongoClient.connect(dbConnection, function(err,db) {
     if(typeof userEmail !== undefined){
-      let company = req.query.company;
-      let details = req.body.details;
+      let company = req.query.client_name;
+      let amount = req.body.amount;
+      console.log(company)
 
       db.collection('users')
       .update({ "email": userEmail },
         { $addToSet: {
         'favoriteBills': {
             'company': company,
-            'details': details
+            'details': amount
 
           }
         }
