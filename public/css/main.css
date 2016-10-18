@@ -63,4 +63,7 @@ button {
 .card-title {
   font-size: 2em;
 }
+.card-action {
+  height: 75px;
+}
 
