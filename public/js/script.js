@@ -3,22 +3,44 @@
 
 $(document).ready(function() {
 
-   /*d3.select("#chart").text('Hello');*/
+  const $saveDonation = $('.saveBill');
 
-  $('.saveBill').on('click', function(){
+  $saveDonation.click(saveDonation);
 
-    const $results  = $(this).closest('.result');
-    const company   = $results.children('.card-title').text();
-    const details   = $results.children('p').text();
+  function saveDonation(){
+       $(this).text('Saved!')
+           .css({'background-color':'red',
+                 'color':'white'})
 
-   console.log('company :', company, 'details :', details)
+
+
+    let $donation  = $(this).closest('section');
+
+    let company   = $donation.children('h1').text();
+
+    let amount    = $donation.children('.money').text();
+
+    let lobbyOrg  = $donation.children('.registrar').text();
+    let lobbyist  = $donation.children('.lobbyist').text();
+    let transID   = $donation.children('.transactionID').text();
+
+    let article   = {
+      company,
+      amount,
+      lobbyOrg,
+      lobbyist,
+      transID
+    }
+    console.log(article)
+
+
 
     $.ajax({
       url: 'user/save-content',
       type: 'POST',
+      dataType: 'json',
       data: {
-        'company': company,
-        'details': details
+        article,
         },
       })
       .done(function(data) {
@@ -30,7 +52,8 @@ $(document).ready(function() {
       .always(function() {
       console.log("complete");
       });
-    })
+    }
+
   })
 
 

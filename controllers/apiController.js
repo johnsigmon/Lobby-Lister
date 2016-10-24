@@ -3,6 +3,7 @@ const express       = require('express')
 const bodyParser    = require('body-parser')
 const apiRouter     = express.Router();
 const { enigmaReturns, getDetails } = require('../models/enigmaDB');
+const { saveContent } = require('../models/user')
 /*const { d3Processing } = require('../models/d3Processing');*/
 
 apiRouter.get('/', enigmaReturns, function(req,res) {
@@ -14,5 +15,7 @@ apiRouter.get('/', enigmaReturns, function(req,res) {
 apiRouter.get('/details', getDetails, function(req,res) {
   res.render('search_return/details', {details: res.rows} );
 })
+
+
 
 module.exports = apiRouter;

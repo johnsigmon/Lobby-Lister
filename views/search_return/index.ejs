@@ -12,19 +12,23 @@
         <div class="col s10 offset-s1">
           <%if(companies.length){ %>
           <% companies.forEach( function(companies){  %>
-        <div class="card grey darken-1">
-        <div class="card-content white-text">
+          <section>
 
-        <span class="card-title"><%=companies.client_name%></span>
+
+
+
+
+        <h1 class="card-title"><%=companies.client_name%></h1>
             <br>
-            <span class="money">
-            $<strong><%=companies.amount%></strong>
-            </span>
+            <h2 class="money">
+            $<%=companies.amount%>
+            </h2>
             <br>
           <span class="registrar">
           Registrant:
-          </span>
+
           <%=companies.registrant_name%>
+          </span>
           <br>
             <%if(companies.registrant_general_description){ %>
 
@@ -38,11 +42,11 @@
 
           was most likely, the lobbyist retained for this particular issue.
           <br>
-          <span class="transactionID">Transaction ID: </span><%=companies.id%>
+          <span class="transactionID">Transaction ID: <%=companies.id%></span>
           <p class="center">(use for further research)</p>
 
 
-          </div>
+
 
             <div class="card-action center">
 
@@ -51,14 +55,12 @@
               <button type="submit" class='red darken white-text btn-flat'>What's this money going towards?</button>
             </form>
 
-            <form action="user/save-content" method="post" class="col s6" name=<%=companies.length%>>
-              <input type="hidden" name="client_name" value=<%=companies.client_name%>>
-              <input type="hidden" name="registrant_name" value=<%=companies.registrant_name%>>
-              <input type="hidden" name="amount" value=<%=companies.amount%>>
               <button type="submit" class='saveBill blue darken white-text btn-flat'>Save</button>
-            </form>
+
+
           </div>
-          </div>
+
+          </section>
           <% }) %>
           </div>
           </div>

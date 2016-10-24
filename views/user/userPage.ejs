@@ -7,7 +7,7 @@
         <h1><%= user.fname %> <%= user.lname %></h1>
         <h3><%= user.email %></h3>
         <div class="container">
-          <%if(user..length){ %>
+          <%if(user.length){ %>
           <% companies.forEach( function(companies){  %>
           <div class="row">
           <div class="col s12 m6 result">
@@ -32,14 +32,9 @@
           </div>
           <% }) %>
           <% }else{ %>
-          <li>No Results found</li>
+          <li>You don't have anything saved yet.</li>
           <% } %>
         </div>
-
-
-
-
-
       </body>
 </div>
 </html>

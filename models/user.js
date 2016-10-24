@@ -17,17 +17,13 @@ function loginUser(req,res,next) {
       }
       next();
     })
-  })
-}
-
+  })}
 function createSecure(email, password, callback) {
   bcrypt.genSalt(function(err, salt) {
     bcrypt.hash(password, salt, function(err, hash) {
       callback(email,hash);
     })
-  })
-}
-
+  })}
 function createUser(req, res, next) {
   createSecure( req.body.email, req.body.password, saveUser)
   function saveUser(email, hash) {
@@ -44,51 +40,41 @@ function createUser(req, res, next) {
         next();
       });
     });
-  }
+  }}
+function saveContent (req, res, next) {
+    console.log(req)
+    let company = req.query.client_name;
+    let article = req.query.article;
+  MongoClient.connect(dbConnection, function(err,db) {
+      if(err) throw err;
+
+      db.collection('users').update(
+          { "email": req.session.user.email },
+            { $addToSet: {
+              'favoriteArticles': { 'company': company,
+                                    'article': article
+            }
+          }
+        }, function(err, result){
+          if (err) throw err;
+          console.log('added content to user page');
+          next();
+        });
+
+    });
 }
 
-
-function saveContent (req, res, next) {
-  const userEmail = req.session.user.email;
-  MongoClient.connect(dbConnection, function(err,db) {
-    if(typeof userEmail !== undefined){
-      let company = req.query.client_name;
-      let amount = req.body.amount;
-      console.log(company)
-
-      db.collection('users')
-      .update({ "email": userEmail },
-        { $addToSet: {
-        'favoriteBills': {
-            'company': company,
-            'details': amount
-
-          }
-        }
-      }, function(err, result){
-        if (err) throw err;
-        console.log('added content to user page')
-        next()
-
-      })
-      } else {
-        console.log('not logged in')
-      }
-    })
-  }
-
-function loadUserProfile (req, res, next) {
-
+/*function loadUserProfile (req, res, next) {
     MongoClient.connect(dbConnection, function(err,db) {
       if (typeof req.session.user !== undefined) {
         db.collection('users').find({ email: req.session.user.email }).toArray((err,data)=>{
           if (err) throw err
             res.userProfile = data
-          next()
+          next();
         })
       }
     })
-  }
+  }*/
 
 
-module.exports = { createUser, loginUser, saveContent, loadUserProfile }
+module.exports = { createUser, loginUser, saveContent }
