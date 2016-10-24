@@ -7,25 +7,24 @@
       <h1><%= user.fname %> <%= user.lname %></h1>
 
   <div class="container">
-  <% if(!user) { %>
-    <h1>Not logged in!</h1>
-    <% } else { %>
+  <h1>My Lobby List</h1>
+  <% if(user.favoriteArticles.length) { %>
     <h1><%=user.fname%>'s Page</h1>
-            <%if(user.length){ %>
-          <% companies.forEach( function(companies){  %>
+            <%if(user.favoriteArticles.length){ %>
+          <% user.favoriteArticles.forEach( function(article){  %>
           <div class="row">
           <div class="col s12 m6 result">
           <div class="card blue-grey darken-1 ">
           <div class="card-content white-text ">
-          <span class="card-title"><%=companies.client_name%></span>
+          <span class="card-title"><%=article.company%></span>
             <p>$
-              <strong><%=companies.amount%></strong>
+              <strong><%=article.amount%></strong>
               <br>
-              <%=companies.client_parent_name%>
+              <%=article.lobbyOrg%>
               <br>
-              <%=companies.year%>
+              <%=article.lobbyist%>
             </p>
-            <p>Transaction ID <br><%=companies.transaction_id%></p>
+            <p>Transaction ID <br><%=article.transID%></p>
           </div>
           <div class="card-action">
               <a href="billLink">The bill</a>
@@ -36,9 +35,9 @@
           </div>
           <% }) %>
           <% }else{ %>
-          <li>You don't have anything saved yet.</li>
-          <% } %>
+          <li>You don't have anything saved yet!</li>
 
+          <% } %>
           <% } %>
   </div>
   </body>

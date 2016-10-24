@@ -16,7 +16,9 @@ userRouter.post('/login', loginUser, (req,res)=> {
 });
 ///////////
 userRouter.get('/mypage', loadUserProfile, (req,res)=>{
-  res.render('user/mypage', {user: req.session.user, userInfo: res.userProfile})})
+   res.render('user/mypage', { user : req.session.user })
+   console.log(res.locals.user)
+});
 
 userRouter.post('/save-content', saveContent, (req,res)=>{
   res.redirect('/user/mypage')

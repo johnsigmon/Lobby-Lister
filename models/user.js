@@ -33,7 +33,7 @@ function createUser(req, res, next) {
         lname: req.body.lname,
         email: email,
         passwordDigest: hash,
-        favoriteBills: []
+        favoriteArticles: []
       }
       db.collection('users').insertOne(userInfo, function(err, result) {
         if(err) throw err;
@@ -70,16 +70,28 @@ function saveContent (req, res, next) {
 }
 
 function loadUserProfile (req, res, next) {
+
+    if (req.session && req.session.user) {
+
     MongoClient.connect(dbConnection, function(err,db) {
-      if (typeof req.session.user !== undefined) {
-        db.collection('users').find({ email: req.session.user.email }).toArray((err,data)=>{
-          if (err) throw err
-            res.userProfile = data
-          next();
+      if (err) throw err;
+
+        db.collection('users').findOne({ email: req.session.user.email }, (err,user)=>{
+            if (user) {
+              req.user = user;
+              delete req.user.password;
+              req.session.user = user;
+              res.locals.user = user;
+              next();
+            } else {
+              next();
+            }
+
         })
-      }
+
     })
   }
+}
 
 
 module.exports = { createUser, loginUser, saveContent, loadUserProfile }
