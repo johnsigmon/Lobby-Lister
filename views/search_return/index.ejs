@@ -20,26 +20,16 @@
 
         <h1 class="card-title"><%=companies.client_name%></h1>
             <br>
-            <h2 class="money">
-            $<%=companies.amount%>
-            </h2>
+            <h2 class="money">$<%=companies.amount%></h2>
             <br>
-          <span class="registrar">
-          Registrant:
-
-          <%=companies.registrant_name%>
-          </span>
+          <span class="registrar">Registrant:<%=companies.registrant_name%></span>
           <br>
             <%if(companies.registrant_general_description){ %>
-
            Category:  <%=companies.registrant_general_description%>
            <% } %>
           <br>
 
-          <span class="lobbyist">
-          <%=companies.contact_full_name%>
-            </span>
-
+          <span class="lobbyist"><%=companies.contact_full_name%></span>
           was most likely, the lobbyist retained for this particular issue.
           <br>
           <span class="transactionID">Transaction ID: <%=companies.id%></span>

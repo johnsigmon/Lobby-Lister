@@ -16,15 +16,15 @@
           <div class="col s12 m6 result">
           <div class="card blue-grey darken-1 ">
           <div class="card-content white-text ">
-          <span class="card-title"><%=article.company%></span>
-            <p>$
-              <strong><%=article.amount%></strong>
+          <span class="card-title"><%=article.article.company%></span>
+            <p>
+              <strong><%=article.article.amount%></strong>
               <br>
-              <%=article.lobbyOrg%>
+              <%=article.article.lobbyOrg%>
               <br>
-              <%=article.lobbyist%>
+              <%=article.article.lobbyist%>
             </p>
-            <p>Transaction ID <br><%=article.transID%></p>
+            <p>Transaction ID <br><%=article.article.transID%></p>
           </div>
           <div class="card-action">
               <a href="billLink">The bill</a>
