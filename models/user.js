@@ -42,17 +42,22 @@ function createUser(req, res, next) {
     });
   }}
 function saveContent (req, res, next) {
-    console.log(req)
-    let company = req.query.client_name;
-    let article = req.query.article;
+    console.log(req.body)
+    let article = req.body;
+    let company = req.body.company;
+    let amount = req.body.amount;
+    let lobbyOrg = req.body.lobbyOrg;
+    let lobbyist = req.body.lobbyist;
+    let transID = req.body.transID;
+
+    console.log(company)
   MongoClient.connect(dbConnection, function(err,db) {
       if(err) throw err;
 
       db.collection('users').update(
           { "email": req.session.user.email },
             { $addToSet: {
-              'favoriteArticles': { 'company': company,
-                                    'article': article
+              'favoriteArticles': { 'article': article
             }
           }
         }, function(err, result){
@@ -64,7 +69,7 @@ function saveContent (req, res, next) {
     });
 }
 
-/*function loadUserProfile (req, res, next) {
+function loadUserProfile (req, res, next) {
     MongoClient.connect(dbConnection, function(err,db) {
       if (typeof req.session.user !== undefined) {
         db.collection('users').find({ email: req.session.user.email }).toArray((err,data)=>{
@@ -74,7 +79,7 @@ function saveContent (req, res, next) {
         })
       }
     })
-  }*/
+  }
 
 
-module.exports = { createUser, loginUser, saveContent }
+module.exports = { createUser, loginUser, saveContent, loadUserProfile }

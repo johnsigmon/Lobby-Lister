@@ -40,7 +40,11 @@ $(document).ready(function() {
       type: 'POST',
       dataType: 'json',
       data: {
-        article,
+        company,
+      amount,
+      lobbyOrg,
+      lobbyist,
+      transID
         },
       })
       .done(function(data) {

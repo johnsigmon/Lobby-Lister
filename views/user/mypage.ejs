@@ -7,6 +7,9 @@
       <h1><%= user.fname %> <%= user.lname %></h1>
 
   <div class="container">
+  <% if(!user) { %>
+    <h1>Not logged in!</h1>
+    <% } else { %>
     <h1><%=user.fname%>'s Page</h1>
             <%if(user.length){ %>
           <% companies.forEach( function(companies){  %>
@@ -34,6 +37,8 @@
           <% }) %>
           <% }else{ %>
           <li>You don't have anything saved yet.</li>
+          <% } %>
+
           <% } %>
   </div>
   </body>

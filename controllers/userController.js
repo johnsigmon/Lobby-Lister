@@ -1,5 +1,5 @@
 const userRouter = require('express').Router();
-const { createUser, loginUser, saveContent } = require('../models/user');
+const { createUser, loginUser, saveContent, loadUserProfile } = require('../models/user');
 ////Create new user///
 userRouter.get('/new', (req,res)=> {res.render('user/new')});
 ///Redirect to login///
@@ -15,11 +15,11 @@ userRouter.post('/login', loginUser, (req,res)=> {
   });
 });
 ///////////
-/*userRouter.get('/mypage', loadUserProfile, (req,res)=>{
-  res.render('user/mypage', {user: req.session.user, userInfo: res.userProfile})})*/
+userRouter.get('/mypage', loadUserProfile, (req,res)=>{
+  res.render('user/mypage', {user: req.session.user, userInfo: res.userProfile})})
 
-userRouter.get('/save-content', saveContent, (req,res)=>{
-  res.redirect('user/mypage')
+userRouter.post('/save-content', saveContent, (req,res)=>{
+  res.redirect('/user/mypage')
 });
 
 
