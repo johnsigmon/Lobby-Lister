@@ -1,5 +1,6 @@
 const userRouter = require('express').Router();
-const { createUser, loginUser, saveContent, loadUserProfile } = require('../models/user');
+const { createUser, loginUser, saveContent, loadUserProfile, deleteContent } = require('../models/user');
+
 ////Create new user///
 userRouter.get('/new', (req,res)=> {res.render('user/new')});
 ///Redirect to login///
@@ -23,6 +24,8 @@ userRouter.get('/mypage', loadUserProfile, (req,res)=>{
 userRouter.post('/save-content', saveContent, (req,res)=>{
   res.redirect('/user/mypage')
 });
+
+userRouter.delete('/mypage/delete-content', deleteContent, (req,res)=>{ res.redirect('/user/mypage')})
 
 
 ///////////////////////////////////////

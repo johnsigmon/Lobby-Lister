@@ -3,6 +3,7 @@ const dbConnection        = process.env['MONGODB_URI']  ||'mongodb://localhost:2
 const bcrypt              = require('bcrypt');
 const salt                = bcrypt.genSalt(10);
 
+
 function loginUser(req,res,next) {
   let email       = req.body.email;
   let password    = req.body.password;
@@ -57,7 +58,12 @@ function saveContent (req, res, next) {
       db.collection('users').update(
           { "email": req.session.user.email },
             { $addToSet: {
-              'favoriteArticles': { 'article': article
+              'favoriteArticles': {
+                 'company': company,
+                  'amount': amount,
+                'lobbyOrg': lobbyOrg,
+                'lobbyist': lobbyist,
+                'transID' : transID
             }
           }
         }, function(err, result){
@@ -68,14 +74,29 @@ function saveContent (req, res, next) {
 
     });
 }
+function deleteContent (req, res, next) {
+    let transID = req.body.transID;
+    console.log('DELETE CONTENT')
+    console.log(transID)
+
+    MongoClient.connect(dbConnection, function(err, db) {
+      if(err) throw err;
+
+      db.collection('users').update(
+        { "email": req.session.user.email },
+          { $pull : { favoriteArticles : { transID: transID } } },
+          { multi: true }
+
+        )
+    })
+
+
+}
 
 function loadUserProfile (req, res, next) {
-
     if (req.session && req.session.user) {
-
     MongoClient.connect(dbConnection, function(err,db) {
       if (err) throw err;
-
         db.collection('users').findOne({ email: req.session.user.email }, (err,user)=>{
             if (user) {
               req.user = user;
@@ -94,4 +115,8 @@ function loadUserProfile (req, res, next) {
 }
 
 
-module.exports = { createUser, loginUser, saveContent, loadUserProfile }
+
+
+
+
+module.exports = { createUser, loginUser, saveContent, loadUserProfile, deleteContent }

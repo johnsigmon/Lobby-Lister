@@ -6,17 +6,12 @@
       <nav><% include ../partials/navigation %></nav>
         <div class="container">
           <h3 class="center">Top 10 Payments in the past year.</h3>
-          <section id="chart">
-          </section>
+          <a href="../user/mypage" title="">Go To Your Page</a>
         <div class="row">
         <div class="col s10 offset-s1">
           <%if(companies.length){ %>
           <% companies.forEach( function(companies){  %>
-          <section>
-
-
-
-
+        <section>
 
         <h1 class="card-title"><%=companies.client_name%></h1>
             <br>
