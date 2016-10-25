@@ -7,26 +7,11 @@ html {
   background-color: #264F7F;
   font-family: 'Raleway', sans-serif;
 }
-.greeting {
-  float: right;
-}
+
 section {
   background-color: grey;
 }
-/* Rules for sizing the icon. */
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 72px; }
 
-
-.navig {
-  background-color: #586C7F;
-}
-
-.welcome-message {
-  font-size: 2em;
-}
 p {
   font-size: 1.1em;
 }
@@ -35,12 +20,36 @@ button {
   background-color: #586C7F;
 }
 
-#companySearchForm {
-  padding-top: 20px;
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 72px; }
+
+
+.user-form {
+  margin-top: 60px;
+}
+.site-description {
+  padding: 10px;
+  border-radius: 20px
+}
+
+.results {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+
+}
+
+.results-label {
+  font-size: 1.25em;
+  color: navy;
 }
 
 .money {
   color: lightgreen;
+
   font-weight: bold;
   font-size: 1.75em;
 }
@@ -48,25 +57,37 @@ button {
 .lobbyist {
   color: yellow;
   font-weight: bold;
-  font-size: 1.25em;
+  font-size: 1em;
 }
 
 .registrar {
   color: orange;
   font-weight: bold;
-  font-size: 1.25em;
+  font-size: 1em;
 }
+
 .transactionID {
   color: lightblue;
   font-weight: bold;
-  font-size: 1.25em;
-
+  font-size: 1em;
 }
 
 .card-title {
-  font-size: 2em;
+  font-size: 1.5em;
 }
+.saved-content {
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+/*
 .card-action {
   height: 75px;
+}*/
+
+.mypage-link {
+  float:right;
 }
 
+#companySearchForm {
+  padding-top: 20px;
+}

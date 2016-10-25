@@ -2,12 +2,11 @@
 <html>
 <% include ../partials/head %>
 <body>
+<nav><% include ../partials/navigation %></nav>
 
-  <nav>
-<% include ../partials/navigation %>
-  </nav>
-  <div class="container">
-  <form action="/user/new" method="post">
+<div class="container">
+ <div class="row">
+  <form action="/user/new" method="post" class="col s8 offset-s2 user-form">
     <label for="">First Name:</label>
     <input type="text" name="fname">
       <br>
@@ -20,8 +19,9 @@
     <label for="">Password:</label>
     <input type="password" name="password">
       <br>
-    <input type="Submit" value="Create New User">
+    <input class="btn grey default" type="Submit" value="Create New User">
   </form>
-  </div>
+</div>
+</div>
 </body>
 </html>

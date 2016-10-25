@@ -1,37 +1,41 @@
 const userRouter = require('express').Router();
 const { createUser, loginUser, saveContent, loadUserProfile, deleteContent } = require('../models/user');
 
-////Create new user///
-userRouter.get('/new', (req,res)=> {res.render('user/new')});
-///Redirect to login///
-userRouter.post('/new', createUser, (req,res)=> {res.redirect('login')});
-////
-userRouter.get('/login', (req,res)=> {res.render('user/login')});
+userRouter.get('/new', (req, res) => {
+  res.render('user/new');
+});
 
-userRouter.post('/login', loginUser, (req,res)=> {
+userRouter.post('/new', createUser, (req, res) => {
+  res.redirect('login');
+});
+
+userRouter.get('/login', (req, res) => {
+  res.render('user/login');
+});
+
+userRouter.post('/login', loginUser, (req, res) => {
   req.session.user = res.user;
-  req.session.save((err)=> {
-    if(err) throw err;
+  req.session.save((err) => {
+    if (err) throw err;
     res.redirect('/user/mypage');
   });
 });
-///////////
-userRouter.get('/mypage', loadUserProfile, (req,res)=>{
-   res.render('user/mypage', { user : req.session.user })
-   console.log(res.locals.user)
+
+userRouter.get('/mypage', loadUserProfile, (req, res) => {
+  res.render('user/mypage', { user: req.session.user });
 });
 
-userRouter.post('/save-content', saveContent, (req,res)=>{
-  res.redirect('/user/mypage')
+userRouter.post('/save-content', saveContent, (req, res) => {
+  res.redirect('/user/mypage');
 });
 
-userRouter.delete('/mypage/delete-content', deleteContent, (req,res)=>{ res.redirect('/user/mypage')})
+userRouter.delete('/mypage/delete-content', deleteContent, (req, res) => {
+  res.redirect('/user/mypage');
+});
 
-
-///////////////////////////////////////
-//user logout
-userRouter.delete('/logout', (req,res)=> {
-  req.session.destroy((err)=> {
+userRouter.delete('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) throw err;
     res.redirect('/');
   });
 });

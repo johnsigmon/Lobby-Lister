@@ -1,21 +1,16 @@
-'use strict'
-const express       = require('express')
-const bodyParser    = require('body-parser')
-const apiRouter     = express.Router();
+const express = require('express');
 const { enigmaReturns, getDetails } = require('../models/enigmaDB');
-const { saveContent } = require('../models/user')
-/*const { d3Processing } = require('../models/d3Processing');*/
 
-apiRouter.get('/', enigmaReturns, function(req,res) {
+const apiRouter = express.Router();
 
-    res.render('search_return/index', {companies: res.results,
-                                        details: res.rows } );
+apiRouter.get('/', enigmaReturns, (req, res) => {
+  res.render('search_return/index', { companies: res.results,
+                                        details: res.rows,
+                                        user: req.session.user });
 });
 
-apiRouter.get('/details', getDetails, function(req,res) {
-  res.render('search_return/details', {details: res.rows} );
-})
-
-
+apiRouter.get('/details', getDetails, (req, res) => {
+  res.render('search_return/details', { details: res.rows });
+});
 
 module.exports = apiRouter;
