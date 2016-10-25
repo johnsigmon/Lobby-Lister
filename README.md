@@ -11,11 +11,11 @@
   As an admin, I should be able to manage user accounts.
   
   ***
-  ##To Do 
-    1. Fix up the CSS of the site. Currency formatting, etc
-    2. More additional features to add.
+##To Do 
+    - Fix up the CSS of the site. Currency formatting, etc
+    - More additional features to add.
         *filter by industry
         *filter by cause category
         *for past bills, show the outcome
-    3. Data Visualization
+    - Data Visualization
         *flesh out data Visualizations to show their impact on the industry.
