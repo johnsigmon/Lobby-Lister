@@ -13,18 +13,20 @@ function loginUser(req,res,next) {
       if(err) throw err;
       if(user === null) {
         console.log('No account associated with email ',email);
-      } else  if(bcrypt.compareSync(password, user.passwordDigest)){
+      } else if(bcrypt.compareSync(password, user.passwordDigest)){
         res.user = user;
       }
       next();
-    })
+    });
   })}
+
 function createSecure(email, password, callback) {
   bcrypt.genSalt(function(err, salt) {
     bcrypt.hash(password, salt, function(err, hash) {
       callback(email,hash);
     })
   })}
+
 function createUser(req, res, next) {
   createSecure( req.body.email, req.body.password, saveUser)
   function saveUser(email, hash) {
@@ -42,8 +44,9 @@ function createUser(req, res, next) {
       });
     });
   }}
+
 function saveContent (req, res, next) {
-    console.log(req.body)
+
     let article = req.body;
     let company = req.body.company;
     let amount = req.body.amount;
@@ -52,9 +55,8 @@ function saveContent (req, res, next) {
     let transID = req.body.transID;
 
     console.log(company)
-  MongoClient.connect(dbConnection, function(err,db) {
+    MongoClient.connect(dbConnection, function(err,db) {
       if(err) throw err;
-
       db.collection('users').update(
           { "email": req.session.user.email },
             { $addToSet: {
@@ -71,26 +73,20 @@ function saveContent (req, res, next) {
           console.log('added content to user page');
           next();
         });
-
     });
 }
+
 function deleteContent (req, res, next) {
     let transID = req.body.transID;
-    console.log('DELETE CONTENT')
-    console.log(transID)
 
     MongoClient.connect(dbConnection, function(err, db) {
       if(err) throw err;
-
       db.collection('users').update(
         { "email": req.session.user.email },
           { $pull : { favoriteArticles : { transID: transID } } },
           { multi: true }
-
         )
     })
-
-
 }
 
 function loadUserProfile (req, res, next) {
@@ -107,9 +103,7 @@ function loadUserProfile (req, res, next) {
             } else {
               next();
             }
-
         })
-
     })
   }
 }
