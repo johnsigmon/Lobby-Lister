@@ -10,7 +10,8 @@
   As a user, I should be able to save search results of my preference to a private page for access later.
   As an admin, I should be able to manage user accounts.
   
-  ***
+***
+
 ##To Do 
     - Fix up the CSS of the site. Currency formatting, etc
     - More additional features to add.
