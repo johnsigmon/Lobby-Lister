@@ -11,30 +11,28 @@
           <% if(user.favoriteArticles.length) { %>
             <%if(user.favoriteArticles.length) { %>
           <% user.favoriteArticles.forEach( function(article){  %>
-          <section class="saved-content">
-      <span class="card-title"><%=article.company%></span>
-      <br>
-      <span class="money"><%=article.amount%></span>
-      <br>
-      <span class="results-label">Registrant: </span><span class="registrar"><%=article.lobbyOrg%></span>
-      <br>
-      <span class="results-label">Lobbyist: </span><span class="lobbyist"><%=article.lobbyist%></span>
-      <br>
-      <span class="results-label">Transaction ID: </span><span class="transactionID"><%=article.transID%></span>
-          <div class="card-action center">
-          <button type="submit" class='deleteBill blue darken white-text btn-flat'>Delete</button>
-          </div>
-
-          </section>
+            <section class="saved-content">
+              <span class="card-title"><%=article.company%></span>
+              <br>
+              <span class="money"><%=article.amount%></span>
+              <br>
+              <span class="results-label">Registrant: </span><span class="registrar"><%=article.lobbyOrg%></span>
+              <br>
+              <span class="results-label">Lobbyist: </span><span class="lobbyist"><%=article.lobbyist%></span>
+              <br>
+              <span class="results-label">Transaction ID: </span><span class="transactionID"><%=article.transID%></span>
+              <div class="card-action center">
+                <button type="submit" class='deleteBill blue darken white-text btn-flat'>Delete</button>
+              </div>
+            </section>
           <% }) %>
           <% }else{ %>
-          <h4>You don't have anything saved yet!</h4>
+            <h4>You don't have anything saved yet!</h4>
           <% } %>
           <% } %>
-          </div>
-          </div>
-
-  </div>
+        </div>
+      </div>
+    </div>
    <script type="text/javascript" src="/js/script.js"></script>
   </body>
   </div>

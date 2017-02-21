@@ -25,7 +25,9 @@ button {
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 72px; }
-
+a.mypage-link {
+  margin-top: 50px;
+}
 
 .user-form {
   margin-top: 60px;
@@ -74,6 +76,15 @@ button {
 
 .card-title {
   font-size: 1.5em;
+}
+.card-content {
+  height: 100%;
+  max-height: 200px;
+  overflow: scroll;
+}
+.card-action {
+  padding: 10px;
+  border-top: 3px solid #264F7F;
 }
 .saved-content {
   margin-bottom: 10px;
